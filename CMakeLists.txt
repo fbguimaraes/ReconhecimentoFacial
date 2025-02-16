@@ -46,7 +46,13 @@ pico_enable_stdio_usb(ReconhecimentoFacial 1)
 
 # Add the standard library to the build
 target_link_libraries(ReconhecimentoFacial
-        pico_stdlib)
+        pico_stdlib
+        hardware_pwm    # Adiciona suporte a PWM
+        hardware_pio
+        hardware_clocks
+        hardware_uart
+        hardware_i2c
+        )
 
 # Add the standard include files to the build
 target_include_directories(ReconhecimentoFacial PRIVATE
