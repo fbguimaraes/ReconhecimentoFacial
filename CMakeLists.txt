@@ -52,6 +52,7 @@ target_link_libraries(ReconhecimentoFacial
         hardware_clocks
         hardware_uart
         hardware_i2c
+        pico_cyw43_arch_lwip_threadsafe_background
         )
 
 # Add the standard include files to the build

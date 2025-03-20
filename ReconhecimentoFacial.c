@@ -6,6 +6,9 @@
 #include "hardware/i2c.h"
 #include "hardware/gpio.h"
 #include "hardware/pwm.h"
+#include "pico/cyw43_arch.h"
+#include "lwip/tcp.h"
+
 
 // Definição dos pinos dos LEDs
 #define LED_VERDE 11     
@@ -19,6 +22,9 @@
 #define LIGADO 1
 #define DESLIGADO 0
 
+
+#define WIFI_SSID "Labirang"
+#define WIFI_PASS "1fp1*007"
 // Configura o buzzer para fazer som
 void configurar_buzzer() {
     gpio_set_function(BUZZER_PIN, GPIO_FUNC_PWM);
@@ -51,11 +57,15 @@ void configurar_leds() {
     gpio_put(LED_VERMELHO, DESLIGADO);
 }
 
+
+
 int main() {
     stdio_init_all(); // Inicializa comunicação
 
+    
     configurar_leds();    
-    configurar_buzzer();  
+    configurar_buzzer(); 
+
 
     while (true) {
         int ch = getchar_timeout_us(1000000); // Espera um comando por 1 segundo
